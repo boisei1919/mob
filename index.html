@@ -1,0 +1,91 @@
+#### index.html
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>거대한 모브들의 쉼터</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 구글 폰트: 두꺼운 폰트 -->
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>환영합니다.<br>이곳은 꽉 찼습니다.</h1>
+        </header>
+        
+        <div class="mob-grid">
+            <!-- 이미지가 반복되는 구간 -->
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+            <div class="mob-card"><img src="images/mob1.png" alt="아저씨"></div>
+        </div>
+
+        <div class="heavy-breathing">
+            <p>후욱... 후욱...</p>
+        </div>
+    </div>
+</body>
+</html>
+```
+
+#### style.css
+```css
+body {
+    background-color: #f0e6d2; /* 약간 누런 셔츠 색 */
+    margin: 0;
+    padding: 0;
+    font-family: 'Black Han Sans', sans-serif;
+    overflow-x: hidden; /* 가로 스크롤 방지 */
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 50px;
+    text-align: center;
+    font-size: 2rem;
+    border-bottom: 10px solid #d35400; /* 넥타이 색 */
+}
+
+/* 모브 아저씨들을 꽉 채우는 그리드 */
+.mob-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0; /* 틈을 주지 않고 밀착 */
+}
+
+.mob-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* 마우스 올리면 부담스럽게 확대됨 */
+.mob-card img:hover {
+    transform: scale(1.2);
+    z-index: 10;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+/* 숨소리 텍스트 애니메이션 */
+.heavy-breathing {
+    text-align: center;
+    font-size: 3rem;
+    color: #555;
+    margin-top: 50px;
+    animation: breath 3s infinite ease-in-out;
+}
+
+@keyframes breath {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 1; } /* 숨 들이쉼 */
+    100% { transform: scale(1); opacity: 0.5; }
+}
